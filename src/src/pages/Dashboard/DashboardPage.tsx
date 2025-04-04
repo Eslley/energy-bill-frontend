@@ -65,7 +65,7 @@ const generateMockData2 = () => {
   }));
 };
 
-export const Dashboard: React.FC = () => {
+export const DashboardPage: React.FC = () => {
   return (
     <>
       <Card title="Card" text1="text" text2="12" color="#8884d8" />

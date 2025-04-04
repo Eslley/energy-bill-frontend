@@ -7,7 +7,7 @@ export type GetEnergyBillsOutput = {
   filteredEnergyBills: EnergyBillWithMonthlyDocument[];
 };
 
-interface EnergyBillWithMonthlyDocument {
+export interface EnergyBillWithMonthlyDocument {
   clientNumber: string;
   clientName: string;
   monthlyBills: {
