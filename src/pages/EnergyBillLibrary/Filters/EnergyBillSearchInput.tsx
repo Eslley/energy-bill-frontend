@@ -15,7 +15,7 @@ export const EnergyBillSearchInput = ({
 }: EnergyBillSearchInputProps) => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const debouncedSearchTerm = useDebounce(searchTerm, 1000);
+  const debouncedSearchTerm = useDebounce(searchTerm, 700);
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);

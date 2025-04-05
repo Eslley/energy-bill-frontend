@@ -12,6 +12,8 @@ export const EnergyBillYearButtons = ({
   filters,
   setFilters,
 }: EnergyBillYearButtonsProps) => {
+  const currentYearFiltered = filters.year;
+
   const handleChangeYear = (year: number) => {
     setFilters((prev) => ({
       ...prev,
@@ -26,6 +28,7 @@ export const EnergyBillYearButtons = ({
           key={year}
           label={year.toString()}
           onClick={() => handleChangeYear(year)}
+          isBlocked={currentYearFiltered !== year}
           variant="contained"
           color="secondary"
           sx={{ width: "70px", height: "35px" }}

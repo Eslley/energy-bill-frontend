@@ -2,7 +2,7 @@ import axiosClient from "./client";
 import { GetEnergyBillsInput, GetEnergyBillsOutput } from "./types/energyBill";
 import { GetReportOutput } from "./types/report";
 
-export const filterEnergyBills = async (filters?: GetEnergyBillsInput) => {
+export const getEnergyBills = async (filters?: GetEnergyBillsInput) => {
   try {
     const response = await axiosClient.get<GetEnergyBillsOutput>(
       "/get-energy-bills",

@@ -4,10 +4,10 @@ import {
   EnergyBillWithMonthlyDocument,
   GetEnergyBillsInput,
 } from "../../../api/types/energyBill";
-import { filterEnergyBills } from "../../../api";
+import { getEnergyBills } from "../../../api";
 import { useAlert } from "../../../components/Alert/useAlert";
 
-export const useEnergBillPage = () => {
+export const useEnergyBillPage = () => {
   const { startLoading, stopLoading } = useLoading();
   const { showAlert } = useAlert();
 
@@ -19,17 +19,14 @@ export const useEnergBillPage = () => {
   } as GetEnergyBillsInput);
 
   useEffect(() => {
-    getEnergyBills();
+    filterEnergyBills();
   }, []);
 
-  const getEnergyBills = async (clientNumber?: string, year?: number) => {
+  const filterEnergyBills = async (filters?: GetEnergyBillsInput) => {
     try {
       startLoading();
 
-      const { filteredEnergyBills } = await filterEnergyBills({
-        clientNumber,
-        year,
-      });
+      const { filteredEnergyBills } = await getEnergyBills(filters);
 
       setEnergyBills(filteredEnergyBills);
     } catch (error) {
@@ -47,6 +44,6 @@ export const useEnergBillPage = () => {
     energyBills,
     filters,
     setFilters,
-    getEnergyBills,
+    filterEnergyBills,
   };
 };

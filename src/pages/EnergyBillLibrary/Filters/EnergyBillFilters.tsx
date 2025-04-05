@@ -8,14 +8,16 @@ import { useEffect } from "react";
 interface EnergyBillFiltersProps {
   filters: GetEnergyBillsInput;
   setFilters: React.Dispatch<React.SetStateAction<GetEnergyBillsInput>>;
+  filterEnergyBills: (filters?: GetEnergyBillsInput) => Promise<void>;
 }
 
 export const EnergyBillFilters = ({
   filters,
   setFilters,
+  filterEnergyBills,
 }: EnergyBillFiltersProps) => {
   useEffect(() => {
-    console.log("filtros mudaram", filters);
+    filterEnergyBills(filters);
   }, [filters]);
 
   return (
