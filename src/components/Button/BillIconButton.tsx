@@ -12,15 +12,37 @@ const API_URL = process.env.REACT_APP_API_URL;
 export const IconButtonWithBill = ({ filePath }: IconButtonWithBillProps) => {
   const { showAlert } = useAlert();
 
-  const fileUrl = `${API_URL}upload/${filePath}`;
+  const downloadFile = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    try {
+      if (filePath) {
+        const fileUrl = `${API_URL}/upload/${filePath}`;
 
-  const downloadFile = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (filePath) {
+        const response = await fetch(fileUrl);
+        const blob = await response.blob();
+
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = filePath;
+        document.body.appendChild(link);
+        link.click();
+
+        URL.revokeObjectURL(link.href);
+        document.body.removeChild(link);
+
+        showAlert(
+          "Download :)",
+          "A conta de energia está sendo baixada...",
+          "info",
+          3000
+        );
+      }
+    } catch (error) {
+      console.error("Failed to download file:", error);
       showAlert(
-        "Download :)",
-        "A conta de energia está sendo baixada...",
+        "Download :(",
+        "Erro ao baixar a conta de energia!",
         "info",
-        3000
+        4000
       );
     }
   };
@@ -28,10 +50,9 @@ export const IconButtonWithBill = ({ filePath }: IconButtonWithBillProps) => {
   return (
     <IconButton
       onClick={downloadFile}
-      color="primary"
+      color="inherit"
       size="small"
       disabled={!filePath}
-      sx={{ padding: 0 }}
       aria-label="ícone da conta de energia"
     >
       <ReceiptIcon />
