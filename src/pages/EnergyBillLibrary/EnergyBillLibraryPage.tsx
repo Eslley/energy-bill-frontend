@@ -5,16 +5,11 @@ import { EnergyBillFilters } from "./Filters/EnergyBillFilters";
 import { useEnergyBillPage } from "./hooks/useEnergyBillPage";
 
 export const EnergyBillLibraryPage: React.FC = () => {
-  const { energyBills, filters, setFilters, filterEnergyBills } =
-    useEnergyBillPage();
+  const { energyBills, filters, setFilters } = useEnergyBillPage();
 
   return (
     <>
-      <EnergyBillFilters
-        filters={filters}
-        setFilters={setFilters}
-        filterEnergyBills={filterEnergyBills}
-      />
+      <EnergyBillFilters filters={filters} setFilters={setFilters} />
       <EnergyBillTable bills={energyBills} />
     </>
   );
