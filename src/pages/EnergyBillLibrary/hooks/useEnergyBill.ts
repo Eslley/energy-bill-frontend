@@ -7,7 +7,7 @@ import {
 import { getEnergyBills } from "../../../api";
 import { useAlert } from "../../../components/Alert/useAlert";
 
-export const useEnergyBillPage = () => {
+export const useEnergyBill = () => {
   const { startLoading, stopLoading } = useLoading();
   const { showAlert } = useAlert();
 
