@@ -24,7 +24,7 @@ export const EnergyBillSearchInput = ({
   useEffect(() => {
     setFilters((prev) => ({
       ...prev,
-      search: debouncedSearchTerm.trim() || undefined,
+      clientNumber: debouncedSearchTerm.trim() || undefined,
     }));
   }, [debouncedSearchTerm, setFilters]);
 
