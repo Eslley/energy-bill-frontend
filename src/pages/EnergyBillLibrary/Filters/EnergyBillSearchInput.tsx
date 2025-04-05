@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Search as SearchIcon } from "@mui/icons-material";
 import { Input } from "../../../components/Input/Input";
 import { GetEnergyBillsInput } from "../../../api/types/energyBill";
+import { useDebounce } from "../../../hooks/useDebounce";
 
 interface EnergyBillSearchInputProps {
   filters: GetEnergyBillsInput;
@@ -14,9 +15,18 @@ export const EnergyBillSearchInput = ({
 }: EnergyBillSearchInputProps) => {
   const [searchTerm, setSearchTerm] = useState("");
 
+  const debouncedSearchTerm = useDebounce(searchTerm, 1000);
+
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
+
+  useEffect(() => {
+    setFilters((prev) => ({
+      ...prev,
+      search: debouncedSearchTerm.trim() || undefined,
+    }));
+  }, [debouncedSearchTerm, setFilters]);
 
   return (
     <Input

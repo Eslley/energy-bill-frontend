@@ -17,11 +17,9 @@ interface LoadingProviderProps {
 export default function LoadingProvider({ children }: LoadingProviderProps) {
   const [loading, setLoading] = useState<boolean>(false);
 
-  // Functions to control the loading state
   const startLoading = () => setLoading(true);
   const stopLoading = () => setLoading(false);
 
-  // The value passed to the context
   const value = { startLoading, stopLoading };
 
   return (

@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import LoadingProvider from "./src/components/Loading/LoadingProvider";
 import { ThemeProvider } from "@mui/material";
-import { theme } from "./src/styles/theme";
-import { AlertProvider } from "./src/components/Alert/AlertProvider";
+import { theme } from "./styles/theme";
+import { AlertProvider } from "./components/Alert/AlertProvider";
+import LoadingProvider from "./components/Loading/LoadingProvider";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

@@ -1,10 +1,9 @@
-// src/App.tsx
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { DashboardPage } from "./src/pages/Dashboard/DashboardPage";
-import { EnergyBillLibraryPage } from "./src/pages/EnergyBillLibrary/EnergyBillLibraryPage";
 import { Container } from "@mui/material";
-import { NotFound } from "./src/pages/NotFound/NotFound";
+import { DashboardPage } from "./pages/Dashboard/DashboardPage";
+import { EnergyBillLibraryPage } from "./pages/EnergyBillLibrary/EnergyBillLibraryPage";
+import { NotFound } from "./pages/NotFound/NotFound";
 
 const App: React.FC = () => {
   return (

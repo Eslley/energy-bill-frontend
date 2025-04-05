@@ -13,7 +13,6 @@ export const IconButtonWithBill = ({ filePath }: IconButtonWithBillProps) => {
   const { showAlert } = useAlert();
 
   const fileUrl = `${API_URL}upload/${filePath}`;
-  console.log(fileUrl);
 
   const downloadFile = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (filePath) {

@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import { EnergyBillSearchInput } from "./EnergyBillSearchInput";
 import { GetEnergyBillsInput } from "../../../api/types/energyBill";
 import { EnergyBillYearButtons } from "./EnergyBillYearButtons";
+import { useEffect } from "react";
 
 interface EnergyBillFiltersProps {
   filters: GetEnergyBillsInput;
@@ -13,6 +14,10 @@ export const EnergyBillFilters = ({
   filters,
   setFilters,
 }: EnergyBillFiltersProps) => {
+  useEffect(() => {
+    console.log("filtros mudaram", filters);
+  }, [filters]);
+
   return (
     <Box
       sx={{

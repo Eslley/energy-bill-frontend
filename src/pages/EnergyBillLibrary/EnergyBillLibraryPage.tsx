@@ -7,8 +7,6 @@ import { useEnergBillPage } from "./hooks/useEnergyBillPage";
 export const EnergyBillLibraryPage: React.FC = () => {
   const { energyBills, filters, setFilters } = useEnergBillPage();
 
-  useEffect(() => {}, [filters]);
-
   return (
     <>
       <EnergyBillFilters filters={filters} setFilters={setFilters} />
