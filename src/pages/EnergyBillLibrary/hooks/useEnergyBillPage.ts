@@ -15,12 +15,12 @@ export const useEnergyBillPage = () => {
     [] as EnergyBillWithMonthlyDocument[]
   );
   const [filters, setFilters] = useState({
-    year: new Date().getFullYear(),
+    year: 2024,
   } as GetEnergyBillsInput);
 
   useEffect(() => {
-    filterEnergyBills();
-  }, []);
+    filterEnergyBills(filters);
+  }, [filters]);
 
   const filterEnergyBills = async (filters?: GetEnergyBillsInput) => {
     try {
