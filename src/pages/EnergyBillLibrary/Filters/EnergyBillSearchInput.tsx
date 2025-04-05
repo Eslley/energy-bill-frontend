@@ -31,7 +31,7 @@ export const EnergyBillSearchInput = ({
   return (
     <Input
       icon={<SearchIcon />}
-      width="300px"
+      width="auto"
       height="40px"
       value={searchTerm}
       onChange={handleSearchChange}
