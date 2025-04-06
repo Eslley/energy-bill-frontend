@@ -12,7 +12,7 @@ export const EnergyBillTableEmpty = () => {
         height="200px"
       >
         <Receipt sx={{ fontSize: 48, color: "text.secondary", mb: 1 }} />
-        <Typography variant="h6" color="text.secondary">
+        <Typography variant="h6" color="text.secondary" align="center">
           Nenhuma conta de energia encontrada!
         </Typography>
       </Box>
