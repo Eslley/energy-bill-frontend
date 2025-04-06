@@ -1,4 +1,4 @@
-import { InsertDriveFileOutlined } from "@mui/icons-material";
+import { Receipt } from "@mui/icons-material";
 import { Box, Paper, TableContainer, Typography } from "@mui/material";
 
 export const EnergyBillTableEmpty = () => {
@@ -11,9 +11,7 @@ export const EnergyBillTableEmpty = () => {
         justifyContent="center"
         height="200px"
       >
-        <InsertDriveFileOutlined
-          sx={{ fontSize: 48, color: "text.secondary", mb: 1 }}
-        />
+        <Receipt sx={{ fontSize: 48, color: "text.secondary", mb: 1 }} />
         <Typography variant="h6" color="text.secondary">
           Nenhuma conta de energia encontrada!
         </Typography>
