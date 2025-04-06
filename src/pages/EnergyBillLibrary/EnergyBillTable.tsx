@@ -1,5 +1,4 @@
 import {
-  Box,
   Paper,
   Table,
   TableBody,
@@ -7,38 +6,18 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
 } from "@mui/material";
-import { InsertDriveFileOutlined } from "@mui/icons-material";
 import { IconButtonWithBill } from "../../components/Button/BillIconButton";
 import { EnergyBillWithMonthlyDocument } from "../../api/types/energyBill";
 import { months } from "../../utils/date";
+import { EnergyBillTableEmpty } from "./EnergyBillTableEmpty";
 
 interface EnergyBillTableProps {
   bills: EnergyBillWithMonthlyDocument[];
 }
 
 export const EnergyBillTable = ({ bills }: EnergyBillTableProps) => {
-  if (!bills.length) {
-    return (
-      <TableContainer component={Paper} sx={{ py: 6 }}>
-        <Box
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          height="200px"
-        >
-          <InsertDriveFileOutlined
-            sx={{ fontSize: 48, color: "text.secondary", mb: 1 }}
-          />
-          <Typography variant="h6" color="text.secondary">
-            Nenhuma conta de energia encontrada!
-          </Typography>
-        </Box>
-      </TableContainer>
-    );
-  }
+  if (!bills.length) return <EnergyBillTableEmpty />;
 
   return (
     <TableContainer component={Paper}>
