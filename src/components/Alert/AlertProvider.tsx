@@ -29,6 +29,7 @@ export const AlertProvider: React.FC<AlertProviderProps> = ({ children }) => {
   const [dataAlert, setDataAlert] = useState<AlertData | null>(null);
   const [open, setOpen] = useState(false);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const showAlert = (
     title: string,
     message: string,

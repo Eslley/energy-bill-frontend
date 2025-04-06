@@ -1,6 +1,5 @@
 import React from "react";
 import { TextField, InputAdornment } from "@mui/material";
-import { ThemeColors } from "../../styles/theme";
 
 interface InputProps {
   label?: string;

@@ -12,6 +12,7 @@ export const useDashboard = () => {
 
   useEffect(() => {
     fetchReport();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchReport = async () => {

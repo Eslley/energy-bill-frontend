@@ -1,8 +1,6 @@
 import React from "react";
 import { Paper, Typography } from "@mui/material";
 import {
-  BarChart as RawBarChart,
-  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -13,7 +11,6 @@ import {
   LineChart as RawLineChart,
 } from "recharts";
 import { mapYAxisIndexToColor } from "../../utils/charts";
-import { formatCurrency } from "../../utils/format";
 
 interface LineChartProps {
   title: string;

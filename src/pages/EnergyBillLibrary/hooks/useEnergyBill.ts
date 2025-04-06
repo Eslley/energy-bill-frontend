@@ -20,6 +20,7 @@ export const useEnergyBill = () => {
 
   useEffect(() => {
     filterEnergyBills(filters);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
 
   const filterEnergyBills = async (filters?: GetEnergyBillsInput) => {
