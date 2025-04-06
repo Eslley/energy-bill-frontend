@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/energy-bill/static/css/main.124cbd43.css",
+    "main.js": "/energy-bill/static/js/main.6878eaae.js",
+    "static/js/453.c908f91c.chunk.js": "/energy-bill/static/js/453.c908f91c.chunk.js",
+    "index.html": "/energy-bill/index.html",
+    "main.124cbd43.css.map": "/energy-bill/static/css/main.124cbd43.css.map",
+    "main.6878eaae.js.map": "/energy-bill/static/js/main.6878eaae.js.map",
+    "453.c908f91c.chunk.js.map": "/energy-bill/static/js/453.c908f91c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.124cbd43.css",
+    "static/js/main.6878eaae.js"
+  ]
+}
