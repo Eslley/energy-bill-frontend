@@ -42,7 +42,7 @@ export const Card = ({ title, subtitle, info }: CardProps) => {
             {title}
           </Typography>
           <Typography
-            variant="h6"
+            variant="body1"
             color="text.secondary"
             sx={{ transition: "color 0.3s ease" }}
           >
@@ -50,7 +50,7 @@ export const Card = ({ title, subtitle, info }: CardProps) => {
           </Typography>
           {info && (
             <Typography
-              variant="body1"
+              variant="body2"
               color="text.secondary"
               sx={{ transition: "color 0.3s ease" }}
             >
