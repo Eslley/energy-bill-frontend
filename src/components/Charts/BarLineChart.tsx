@@ -43,7 +43,7 @@ export const BarLineChart: React.FC<BarLineChartProps> = ({
       elevation={3}
       style={{
         width: width,
-        height: height,
+        minHeight: height,
         padding: "10px",
         borderRadius: "10px",
       }}
