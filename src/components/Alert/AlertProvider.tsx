@@ -1,5 +1,5 @@
 import { Alert, AlertTitle, Snackbar } from "@mui/material";
-import { createContext, useContext, useMemo, useState, ReactNode } from "react";
+import { createContext, useMemo, useState, ReactNode } from "react";
 
 interface AlertData {
   title: string;
@@ -26,11 +26,9 @@ interface AlertProviderProps {
 }
 
 export const AlertProvider: React.FC<AlertProviderProps> = ({ children }) => {
-  // State to manage the alert data
   const [dataAlert, setDataAlert] = useState<AlertData | null>(null);
   const [open, setOpen] = useState(false);
 
-  // Function to show alert
   const showAlert = (
     title: string,
     message: string,
@@ -46,7 +44,6 @@ export const AlertProvider: React.FC<AlertProviderProps> = ({ children }) => {
     setOpen(true);
   };
 
-  // Handle the closing of the alert
   const handleClose = (
     event: React.SyntheticEvent | Event,
     reason?: string
@@ -64,7 +61,7 @@ export const AlertProvider: React.FC<AlertProviderProps> = ({ children }) => {
     <AlertContext.Provider value={value}>
       {!!dataAlert?.message && (
         <Snackbar
-          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
           open={open}
           autoHideDuration={dataAlert.duration}
           onClose={handleClose}
