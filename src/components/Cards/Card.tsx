@@ -1,52 +1,64 @@
-// Card.tsx
-import React from "react";
-import { Paper, Typography, Box } from "@mui/material";
+import { Card as RawCard, CardContent, Typography, Box } from "@mui/material";
 
 interface CardProps {
-  color: string; // Custom background color for the card
-  title: string; // Title of the card
-  text1: string; // First text content
-  text2?: string; // Second text content
+  title: string;
+  subtitle: string;
+  info?: string;
 }
 
-export const Card: React.FC<CardProps> = ({ color, title, text1, text2 }) => {
+export const Card = ({ title, subtitle, info }: CardProps) => {
   return (
-    <Paper
-      style={{
-        backgroundColor: color,
-        width: "170px",
-        height: "100px",
-        borderRadius: "10px",
-        padding: "20px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-        transition: "transform 0.3s ease-in-out",
+    <RawCard
+      sx={{
+        width: 200,
+        height: 110,
+        borderRadius: 2,
+        boxShadow: 3,
+        transition: "all 0.3s ease",
+        "&:hover": {
+          boxShadow: 6,
+          transform: "scale(1.02)",
+        },
       }}
-      onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
-      onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+      aria-label="card com valores do relatório"
     >
-      <Box textAlign="center">
-        {" "}
-        {/* Box to center content */}
-        <Typography variant="h6" component="div" style={{ fontWeight: "bold" }}>
-          {title}
-        </Typography>
-        <Typography variant="body1" style={{ marginTop: "10px" }}>
-          {text1}
-        </Typography>
-        {text2 ? (
+      <CardContent>
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          height="100%"
+          textAlign="center"
+          sx={{
+            transition: "all 0.3s ease",
+          }}
+        >
           <Typography
-            variant="body2"
-            color="textSecondary"
-            style={{ marginTop: "5px" }}
+            variant="h6"
+            component="div"
+            sx={{ transition: "color 0.3s ease" }}
           >
-            {text2}
+            {title}
           </Typography>
-        ) : null}
-      </Box>
-    </Paper>
+          <Typography
+            variant="h6"
+            color="text.secondary"
+            sx={{ transition: "color 0.3s ease" }}
+          >
+            {subtitle}
+          </Typography>
+          {info && (
+            <Typography
+              variant="body1"
+              color="text.secondary"
+              sx={{ transition: "color 0.3s ease" }}
+            >
+              {info}
+            </Typography>
+          )}
+        </Box>
+      </CardContent>
+    </RawCard>
   );
 };
