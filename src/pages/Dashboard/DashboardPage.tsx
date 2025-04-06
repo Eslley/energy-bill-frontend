@@ -1,8 +1,11 @@
 import React from "react";
-import { Grid, Paper, Typography } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { BarChart } from "../../components/Charts/BarChart";
 import { DonutChart } from "../../components/Charts/DonutChart";
 import { Card } from "../../components/Cards/Card";
+import { useDashboard } from "./hooks/useDashboard";
+import { DashboardEmpty } from "./DashboardEmpty";
+import { formatCurrency, formatkWh } from "../../utils/format";
 
 const data = [
   {
@@ -66,9 +69,55 @@ const generateMockData2 = () => {
 };
 
 export const DashboardPage: React.FC = () => {
+  const { report } = useDashboard();
+
+  if (!report) return <DashboardEmpty />;
+
   return (
     <>
-      <Card title="Card" text1="text" text2="12" color="#8884d8" />
+      <Box display="flex" flexWrap="wrap" gap={2} mb={2}>
+        <Card
+          title="N° de Clientes"
+          subtitle={report.numberOfClients.toString()}
+        />
+        <Card
+          title="N° de Faturas"
+          subtitle={report.numberOfBills.toString()}
+        />
+        <Card
+          title="N° de Instalações"
+          subtitle={report.numberOfInstallations.toString()}
+        />
+        <Card
+          title="Total das Faturas"
+          subtitle={formatCurrency(report.totalBillsPrice)}
+        />
+        <Card
+          title="E. Elétrica"
+          subtitle={formatkWh(report.totalEletricalEnergyConsume)}
+          info={formatCurrency(report.totalEletricalEnergyPrice)}
+        />
+        <Card
+          title="E. Compensada"
+          subtitle={formatkWh(report.totalGDIEnergyConsume)}
+          info={formatCurrency(report.totalGDIEnergyPrice)}
+        />
+        <Card
+          title="E. Compensada"
+          subtitle={formatCurrency(report.totalEletricalEnergyPriceWithoutGD)}
+          info="(Sem GD)"
+        />
+        <Card
+          title="Cont. Iluminação Pública"
+          subtitle=""
+          info={formatCurrency(report.totalPublicLightingContributionPrice)}
+        />
+        <Card
+          title="Comp. por Danos"
+          subtitle=""
+          info={formatCurrency(report.totalDamageCompensationPrice)}
+        />
+      </Box>
 
       <Grid container spacing={2}>
         {/* Chart 1 */}
@@ -77,7 +126,6 @@ export const DashboardPage: React.FC = () => {
             title="Gráfico 1"
             data={generateMockData2()}
             dataKey={"name"}
-            barColors={["#8884d8", "#82ca9d", "#82cd9f"]}
             width="70%"
             height="270px"
           />
