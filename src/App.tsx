@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import { Container } from "@mui/material";
 import { DashboardPage } from "./pages/Dashboard/DashboardPage";
 import { EnergyBillLibraryPage } from "./pages/EnergyBillLibrary/EnergyBillLibraryPage";
@@ -8,7 +8,7 @@ import Navbar from "./components/NavBar/NavBar";
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <HashRouter>
       <Navbar />
 
       <Container sx={{ height: "100%", mt: "100px", pb: "1em" }}>
@@ -19,7 +19,7 @@ const App: React.FC = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Container>
-    </Router>
+    </HashRouter>
   );
 };
 
