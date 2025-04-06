@@ -65,6 +65,7 @@ export const AlertProvider: React.FC<AlertProviderProps> = ({ children }) => {
           open={open}
           autoHideDuration={dataAlert.duration}
           onClose={handleClose}
+          aria-label="mensagem de alerta do sistema"
         >
           <Alert
             sx={{ width: "100%" }}

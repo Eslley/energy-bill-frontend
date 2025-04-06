@@ -74,12 +74,16 @@ export default function Navbar({ window }: NavbarProps) {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="relative" component="nav">
+      <AppBar
+        position="relative"
+        component="nav"
+        aria-label="barra de navegação das páginas do sistema"
+      >
         <Toolbar>
           <IconButton
             edge="start"
             color="inherit"
-            aria-label="Abrir menu"
+            aria-label="abre o menu de navegação"
             onClick={handleDrawerToggle}
             sx={{ mr: "-16px", display: { md: "none" } }}
           >

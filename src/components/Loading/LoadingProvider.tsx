@@ -26,7 +26,11 @@ export default function LoadingProvider({ children }: LoadingProviderProps) {
     <LoadingContext.Provider value={value}>
       {children}
       {loading && (
-        <Backdrop sx={{ color: "#fff", zIndex: 999 }} open={loading}>
+        <Backdrop
+          sx={{ color: "#fff", zIndex: 999 }}
+          open={loading}
+          aria-label="tela de carregamento"
+        >
           <CircularProgress color="inherit" />
         </Backdrop>
       )}

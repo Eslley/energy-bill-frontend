@@ -53,7 +53,7 @@ export const IconButtonWithBill = ({ filePath }: IconButtonWithBillProps) => {
       color="inherit"
       size="small"
       disabled={!filePath}
-      aria-label="ícone da conta de energia"
+      aria-label="botão para download da fatura de energia"
     >
       <ReceiptIcon />
     </IconButton>
