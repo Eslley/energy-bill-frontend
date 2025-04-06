@@ -7,9 +7,6 @@ export interface EnergyBillReport {
   numberOfInstallations: number;
   numberOfBills: number;
   totalBillsPrice: number;
-  monthlyBillsEvolution: {
-    [monthYear: string]: MonthlyBillsAggregation;
-  };
   totalEletricalEnergyConsume: number;
   totalEletricalEnergyPrice: number;
   totalGDIEnergyConsume: number;
@@ -17,15 +14,10 @@ export interface EnergyBillReport {
   totalEletricalEnergyPriceWithoutGD: number;
   totalPublicLightingContributionPrice: number;
   totalDamageCompensationPrice: number;
-  monthlyEletricalAndGDIConsume: {
-    [monthYear: string]: MonthlyEletricalAndGDIConsumeAggregation;
-  };
-  monthlyEletricalConsumeWithoutGDAndGDIPrice: {
-    [monthYear: string]: MonthlyEletricalConsumeWithoutGDAndGDIPriceAggregation;
-  };
+  monthlyBillsAggregation: MonthlyBillsAggregation[];
 }
-
 export interface MonthlyBillsAggregation {
+  monthYear: string;
   numberOfBills: number;
   totalBillsPrice: number;
   totalEletricalEnergyConsume: number;
@@ -35,14 +27,4 @@ export interface MonthlyBillsAggregation {
   totalEletricalEnergyPriceWithoutGD: number;
   totalPublicLightingContributionPrice: number;
   totalDamageCompensationPrice: number;
-}
-
-export interface MonthlyEletricalAndGDIConsumeAggregation {
-  totalEletricalEnergyConsume: number;
-  totalGDIEnergyConsume: number;
-}
-
-export interface MonthlyEletricalConsumeWithoutGDAndGDIPriceAggregation {
-  totalEletricalEnergyPriceWithoutGD: number;
-  totalGDIEnergyPrice: number;
 }

@@ -33,6 +33,10 @@ export enum ThemeColors {
   textDisabled = "#757575",
 
   divider = "#2c2c2c",
+
+  chartPrimary = "#8884d8",
+  chartSecondary = "#82ca9d",
+  chartTertiary = "#ffc658",
 }
 
 export const theme = createTheme({
@@ -80,6 +84,6 @@ export const theme = createTheme({
     divider: ThemeColors.divider,
   },
   typography: {
-    fontFamily: "Roboto, Arial, sans-serif",
+    fontFamily: '"Open Sans", sans-serif',
   },
 });
