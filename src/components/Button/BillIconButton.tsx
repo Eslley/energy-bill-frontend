@@ -4,25 +4,26 @@ import ReceiptIcon from "@mui/icons-material/Receipt";
 import { useAlert } from "../Alert/useAlert";
 
 interface IconButtonWithBillProps {
-  filePath?: string;
+  file?: {
+    fileName: string;
+    filePath: string;
+  };
 }
 
-const API_URL = process.env.REACT_APP_API_URL;
-
-export const IconButtonWithBill = ({ filePath }: IconButtonWithBillProps) => {
+export const IconButtonWithBill = ({ file }: IconButtonWithBillProps) => {
   const { showAlert } = useAlert();
 
   const downloadFile = async (e: React.MouseEvent<HTMLButtonElement>) => {
     try {
-      if (filePath) {
-        const fileUrl = `${API_URL}/upload/${filePath}`;
+      if (file) {
+        const { fileName, filePath } = file;
 
-        const response = await fetch(fileUrl);
+        const response = await fetch(filePath);
         const blob = await response.blob();
 
         const link = document.createElement("a");
         link.href = URL.createObjectURL(blob);
-        link.download = filePath;
+        link.download = fileName;
         document.body.appendChild(link);
         link.click();
 
@@ -52,7 +53,7 @@ export const IconButtonWithBill = ({ filePath }: IconButtonWithBillProps) => {
       onClick={downloadFile}
       color="inherit"
       size="small"
-      disabled={!filePath}
+      disabled={!file}
       aria-label="botão para download da fatura de energia"
     >
       <ReceiptIcon />

@@ -63,7 +63,14 @@ export const EnergyBillTable = ({ bills }: EnergyBillTableProps) => {
               {months.map((month) => (
                 <TableCell key={month} align="center" sx={{ maxWidth: 18 }}>
                   <IconButtonWithBill
-                    filePath={bill.monthlyBills?.[month]?.filePath}
+                    file={
+                      bill.monthlyBills?.[month]
+                        ? {
+                            filePath: bill.monthlyBills?.[month].filePath,
+                            fileName: bill.monthlyBills?.[month].fileName,
+                          }
+                        : undefined
+                    }
                   />
                 </TableCell>
               ))}
