@@ -36,6 +36,13 @@ export const EnergyBillSearchInput = ({
       value={searchTerm}
       onChange={handleSearchChange}
       placeholder="Buscar cliente"
+      sx={{
+        flexGrow: 1,
+        minWidth: {
+          xs: "100%",
+          sm: "250px",
+        },
+      }}
     />
   );
 };

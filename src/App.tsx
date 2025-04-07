@@ -11,7 +11,7 @@ const App: React.FC = () => {
     <HashRouter>
       <Navbar />
 
-      <Container sx={{ height: "100%", mt: "100px", pb: "1em" }}>
+      <Container sx={{ height: "100%", mt: "32px", pb: "1em" }}>
         <Routes>
           <Route path="/" element={<DashboardPage />} />
           <Route path="/bills-library" element={<EnergyBillLibraryPage />} />

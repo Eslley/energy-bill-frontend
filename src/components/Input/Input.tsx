@@ -1,5 +1,5 @@
 import React from "react";
-import { TextField, InputAdornment } from "@mui/material";
+import { TextField, InputAdornment, SxProps } from "@mui/material";
 
 interface InputProps {
   label?: string;
@@ -10,6 +10,7 @@ interface InputProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   type?: string;
   placeholder?: string;
+  sx?: SxProps;
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -21,6 +22,7 @@ export const Input: React.FC<InputProps> = ({
   onChange,
   type = "text",
   placeholder,
+  sx,
 }) => {
   return (
     <TextField
@@ -35,6 +37,7 @@ export const Input: React.FC<InputProps> = ({
       sx={{
         width,
         height,
+        ...sx,
       }}
       InputProps={{
         startAdornment: (

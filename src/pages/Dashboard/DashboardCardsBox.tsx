@@ -12,7 +12,10 @@ export const DashboardCardsBox = ({ report }: DashboardCardsBoxProps) => {
     <Box
       display="flex"
       flexWrap="wrap"
-      justifyContent="space-between"
+      justifyContent={{
+        xs: "center",
+        md: "space-between",
+      }}
       gap={2}
       mb={2}
     >
