@@ -1,4 +1,4 @@
-import React from "react";
+import { useCallback } from "react";
 import { Paper, Typography } from "@mui/material";
 import {
   Bar,
@@ -12,16 +12,16 @@ import {
   ComposedChart,
 } from "recharts";
 import { ThemeColors } from "../../styles/theme";
+import { toolTipFormatter } from "../../utils/charts";
 
 interface BarLineChartProps {
   title: string;
   data: Array<Record<string, any>>;
   dataKeyXAxis: string;
-  barData: { key: string; name: string };
-  lineData: { key: string; name: string };
+  barData: { key: string; name: string; format?: "currency" | "kWh" };
+  lineData: { key: string; name: string; format?: "currency" | "kWh" };
   width: string;
   height: string;
-  toolTipFormatter?: (value: number) => string[];
   yAxisRightLabel: string;
   yAxisLeftLabel: string;
 }
@@ -34,10 +34,18 @@ export const BarLineChart: React.FC<BarLineChartProps> = ({
   lineData,
   width,
   height,
-  toolTipFormatter,
   yAxisLeftLabel,
   yAxisRightLabel,
 }) => {
+  const formatter = useCallback(() => {
+    const formatters = [
+      { name: barData.name, format: barData.format },
+      { name: lineData.name, format: lineData.format },
+    ];
+
+    return toolTipFormatter(formatters);
+  }, [barData, lineData]);
+
   return (
     <Paper
       elevation={3}
@@ -80,7 +88,7 @@ export const BarLineChart: React.FC<BarLineChartProps> = ({
               dx: 25,
             }}
           />
-          <Tooltip formatter={toolTipFormatter} />
+          <Tooltip formatter={formatter()} />
           <Legend />
 
           <Bar

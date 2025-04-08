@@ -1,7 +1,6 @@
 import { Box } from "@mui/material";
 import { EnergyBillReport } from "../../api/types/report";
 import { LineChart } from "../../components/Charts/LineChart";
-import { toolTipFormatter } from "../../utils/charts";
 import { BarLineChart } from "../../components/Charts/BarLineChart";
 
 interface DashboardChartsBoxProps {
@@ -16,7 +15,11 @@ export const DashboardChartsBox = ({ report }: DashboardChartsBoxProps) => {
         data={report.monthlyBillsAggregation}
         dataKeyXAxis={"monthYear"}
         barData={{ key: "numberOfBills", name: "Número de Faturas" }}
-        lineData={{ key: "totalBillsPrice", name: "Preço Total" }}
+        lineData={{
+          key: "totalBillsPrice",
+          name: "Preço Total",
+          format: "currency",
+        }}
         yAxisLeftLabel="N° de Faturas"
         yAxisRightLabel="Preço Total (R$)"
         width="100%"
@@ -31,13 +34,14 @@ export const DashboardChartsBox = ({ report }: DashboardChartsBoxProps) => {
           {
             dataKey: "totalEletricalEnergyConsume",
             name: "Consumo Total E.Elétrica",
+            format: "kWh",
           },
           {
             dataKey: "totalGDIEnergyConsume",
             name: "Consumo Total E.Compensada",
+            format: "kWh",
           },
         ]}
-        toolTipFormatter={toolTipFormatter("kWh")}
         yAxisLabel="Consumo Total (kWh)"
         width="100%"
         height="300px"
@@ -51,14 +55,19 @@ export const DashboardChartsBox = ({ report }: DashboardChartsBoxProps) => {
           {
             dataKey: "totalEletricalEnergyPrice",
             name: "Preço Total E.Elétrica",
+            format: "currency",
           },
           {
             dataKey: "totalGDIEnergyPrice",
             name: "Preço Total E.Compensada",
+            format: "currency",
           },
-          { dataKey: "totalBillsPrice", name: "Preço Total Faturas" },
+          {
+            dataKey: "totalBillsPrice",
+            name: "Preço Total Faturas",
+            format: "currency",
+          },
         ]}
-        toolTipFormatter={toolTipFormatter("currency")}
         yAxisLabel="Preço Total (R$)"
         width="100%"
         height="300px"
@@ -72,14 +81,19 @@ export const DashboardChartsBox = ({ report }: DashboardChartsBoxProps) => {
           {
             dataKey: "totalEletricalEnergyPriceWithoutGD",
             name: "Preço Total E.Elétrica sem GD",
+            format: "currency",
           },
           {
             dataKey: "totalGDIEnergyPrice",
             name: "Preço Total E.Compensada",
+            format: "currency",
           },
-          { dataKey: "totalBillsPrice", name: "Preço Total Faturas" },
+          {
+            dataKey: "totalBillsPrice",
+            name: "Preço Total Faturas",
+            format: "currency",
+          },
         ]}
-        toolTipFormatter={toolTipFormatter("currency")}
         yAxisLabel="Preço Total (R$)"
         width="100%"
         height="300px"

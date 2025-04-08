@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Paper, Typography } from "@mui/material";
 import {
   XAxis,
@@ -10,17 +10,20 @@ import {
   Line,
   LineChart as RawLineChart,
 } from "recharts";
-import { mapYAxisIndexToColor } from "../../utils/charts";
+import { mapYAxisIndexToColor, toolTipFormatter } from "../../utils/charts";
 
 interface LineChartProps {
   title: string;
   data: Array<Record<string, any>>;
   dataKeyXAxis: string;
-  dataKeyYAxis: { dataKey: string; name?: string }[];
+  dataKeyYAxis: {
+    dataKey: string;
+    name: string;
+    format?: "currency" | "kWh";
+  }[];
   width: string;
   height: string;
   yAxisLabel?: string;
-  toolTipFormatter?: (value: number) => string[];
 }
 
 export const LineChart: React.FC<LineChartProps> = ({
@@ -31,8 +34,16 @@ export const LineChart: React.FC<LineChartProps> = ({
   width,
   height,
   yAxisLabel,
-  toolTipFormatter,
 }) => {
+  const formatter = useCallback(() => {
+    const formatters = dataKeyYAxis.map((key) => ({
+      name: key.name,
+      format: key.format,
+    }));
+
+    return toolTipFormatter(formatters);
+  }, [dataKeyYAxis]);
+
   return (
     <Paper
       elevation={3}
@@ -62,7 +73,7 @@ export const LineChart: React.FC<LineChartProps> = ({
               dx: -25,
             }}
           />
-          <Tooltip formatter={toolTipFormatter} />
+          <Tooltip formatter={formatter()} />
           <Legend />
 
           {dataKeyYAxis.map((line, index) => (
