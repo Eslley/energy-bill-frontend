@@ -27,6 +27,7 @@ export const useDashboard = () => {
     } catch (error) {
       showAlert("Erro :(", "Erro ao carregar os dados do relatório", "error");
     } finally {
+      stopLoading();
     }
   };
 
