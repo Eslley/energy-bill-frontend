@@ -1,8 +1,8 @@
 import React, { createContext, useState, ReactNode } from "react";
-import { Backdrop, CircularProgress } from "@mui/material";
+import { Backdrop, CircularProgress, Typography } from "@mui/material";
 
 export interface LoadingContextType {
-  startLoading: () => void;
+  startLoading: (message?: string) => void;
   stopLoading: () => void;
 }
 
@@ -16,8 +16,12 @@ interface LoadingProviderProps {
 
 export default function LoadingProvider({ children }: LoadingProviderProps) {
   const [loading, setLoading] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>();
 
-  const startLoading = () => setLoading(true);
+  const startLoading = (message?: string) => {
+    setMessage(message);
+    setLoading(true);
+  };
   const stopLoading = () => setLoading(false);
 
   const value = { startLoading, stopLoading };
@@ -27,11 +31,28 @@ export default function LoadingProvider({ children }: LoadingProviderProps) {
       {children}
       {loading && (
         <Backdrop
-          sx={{ color: "#fff", zIndex: 999 }}
+          sx={{
+            color: "#fff",
+            zIndex: 999,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
           open={loading}
           aria-label="tela de carregamento"
         >
           <CircularProgress color="inherit" />
+          {message && (
+            <Typography
+              variant="h6"
+              color="inherit"
+              align="center"
+              sx={{ mt: 2 }}
+            >
+              {message}
+            </Typography>
+          )}
         </Backdrop>
       )}
     </LoadingContext.Provider>

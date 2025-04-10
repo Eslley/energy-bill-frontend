@@ -17,7 +17,7 @@ export const useDashboard = () => {
 
   const fetchReport = async () => {
     try {
-      startLoading();
+      startLoading("Aguarde enquanto a aplicação está carregando...");
 
       const { report } = await getReport();
 
@@ -27,7 +27,6 @@ export const useDashboard = () => {
     } catch (error) {
       showAlert("Erro :(", "Erro ao carregar os dados do relatório", "error");
     } finally {
-      stopLoading();
     }
   };
 
